@@ -1,9 +1,12 @@
 const http = require("http")
-const server = http.createServer((req,res)=>{
-    res.end("Premier server")
-}
- 
-)
-server.listen(3001,()=>{
+const app = require("./app")
+
+app.set("port",3000)
+app.use((req,res)=>{
+    res.json({message : 'Im first End poind'})
+})
+
+const server = http.createServer(app)
+server.listen(3000,()=>{
     console.log("Le serveur a demarré");
 })  
